@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6ae1bdd7d28b04bd2b4d03e37daf2d9c, type: 2}
+  - {fileID: 2100000, guid: 0da789ecad747471a98956b95ece3fb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -165,7 +165,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.2588191, y: -0, z: -0, w: 0.9659258}
   m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8478788461556962883}
@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6509183291540895130
 Transform:
   m_ObjectHideFlags: 0
@@ -285,6 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 5470566979614701613, guid: a6627641c02524aa7909e2ddd7a85c90, type: 3}
+  fireballLaunchTransform: {fileID: 8478788461556962883}
   shotCooldown: 2
   searchRadius: 20
 --- !u!1 &9048327908834452470
@@ -414,6 +415,7 @@ MonoBehaviour:
   dashCooldown: 0.5
   mirrorImageSprite: {fileID: 1702337799941402631, guid: f7d0f35a487c146679964adea1e88d54, type: 3}
   mirrorImageCount: 5
+  sprite: {fileID: 6594589965396135265}
   dashStartPosition: {x: 0, y: 0, z: 0}
   dashTargetPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1315389453284321833
@@ -441,7 +443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  invulnerableTime: 1
+  invulnerableTime: 0.5
+  _demonSprite: {fileID: 6594589965396135265}
 --- !u!114 &3579043715010902709
 MonoBehaviour:
   m_ObjectHideFlags: 0

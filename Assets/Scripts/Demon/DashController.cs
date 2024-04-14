@@ -124,4 +124,14 @@ public class DashController : MonoBehaviour
         _dashProgress = 0f;
         _mirrorImagesSpawned = 0;
     }
+
+    public void ModifyDashLength(float value)
+    {
+        maxDashLength *= value;
+    }
+
+    public void ModifyDashCooldown(float value)
+    {
+        dashCooldown *= value;
+    }
 }

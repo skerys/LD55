@@ -16,7 +16,7 @@ public class BabyTurretAnimation : MonoBehaviour
     
     void Awake()
     {
-        _initialRotation = transform.rotation;
+        _initialRotation = spriteTransform.rotation;
     }
 
     void Update()

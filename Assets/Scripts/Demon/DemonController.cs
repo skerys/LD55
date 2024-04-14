@@ -8,6 +8,8 @@ public class DemonController : MonoBehaviour
     [SerializeField] private float MaxSpeed = 1f;
     [SerializeField] private float MaxAcceleration = 10f;
     [SerializeField] private float damagedBounceVelocity = 5f;
+
+    [HideInInspector] public bool allowInput = true;
     
     private Rigidbody _body;
     private Vector2 _input;
@@ -17,6 +19,11 @@ public class DemonController : MonoBehaviour
     public Vector3 TargetVelocity
     {
         get { return _targetVelocity; }
+        set
+        {
+            if (!allowInput)
+                _targetVelocity = value;
+        }
     }
 
     void Start()
@@ -26,11 +33,15 @@ public class DemonController : MonoBehaviour
 
     void Update()
     {
-        _input.x = Input.GetAxisRaw("Horizontal");
-        _input.y = Input.GetAxisRaw("Vertical");
+        if (allowInput)
+        {
+            _input.x = Input.GetAxisRaw("Horizontal");
+            _input.y = Input.GetAxisRaw("Vertical");
+            
+            _targetVelocity = new Vector3(_input.x, 0.0f, _input.y);
+            _targetVelocity = Vector3.ClampMagnitude(_targetVelocity, 1.0f);
+        }
         
-        _targetVelocity = new Vector3(_input.x, 0.0f, _input.y);
-        _targetVelocity = Vector3.ClampMagnitude(_targetVelocity, 1.0f);
 
         _targetVelocity *= MaxSpeed;
     }
@@ -53,5 +64,10 @@ public class DemonController : MonoBehaviour
         if (_body.isKinematic) return;
         
         _body.velocity += direction.normalized * damagedBounceVelocity;
+    }
+
+    public void ModifyMoveSpeed(float value)
+    {
+        MaxSpeed *= value;
     }
 }
