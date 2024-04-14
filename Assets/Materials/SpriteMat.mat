@@ -56,5 +56,9 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    m_Colors: []
+    - _ReplacementFuzziness: 0
+    - _ReplacementRange: 0
+    m_Colors:
+    - _ColorToReplace: {r: 1, g: 1, b: 0.33333334, a: 0}
+    - _EyeColor: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

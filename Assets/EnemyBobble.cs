@@ -23,6 +23,8 @@ public class EnemyBobble : MonoBehaviour
     private float _rotationOffset;
     private float _rotationOldOffset;
 
+    private Quaternion _initialRot;
+
     private bool _hasReset = false;
 
     void Start()
@@ -31,6 +33,8 @@ public class EnemyBobble : MonoBehaviour
         _bobbingFrequencyOffset = Random.Range(0, 2 * Mathf.PI);
         _oldBobbingOffset = Vector3.zero;
         _rotationOldOffset = 0f;
+
+        _initialRot = spriteTransform.rotation;
     }
     
     void Update()
@@ -52,7 +56,7 @@ public class EnemyBobble : MonoBehaviour
             if (_hasReset) return;
             
             spriteTransform.position -= _oldBobbingOffset;
-            spriteTransform.rotation = Quaternion.identity;
+            spriteTransform.rotation = _initialRot;
             _hasReset = true;
             _oldBobbingOffset = Vector3.zero;
         }

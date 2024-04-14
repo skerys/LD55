@@ -5,6 +5,7 @@ using UnityEngine;
 public class BabyTurret : MonoBehaviour
 {
     [SerializeField] private Fireball fireballPrefab;
+    [SerializeField] private Transform fireballLaunchTransform;
     [SerializeField] private float shotCooldown = 2f;
     [SerializeField] private float searchRadius = 5f;
 
@@ -29,7 +30,7 @@ public class BabyTurret : MonoBehaviour
             var enemy = col.gameObject.GetComponent<BaseEnemy>();
             if (enemy)
             {
-                var newFireball = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+                var newFireball = Instantiate(fireballPrefab, fireballLaunchTransform.position, Quaternion.identity);
                 newFireball.transform.forward = enemy.transform.position - transform.position;
 
                 break;

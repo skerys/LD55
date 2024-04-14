@@ -7,6 +7,9 @@ public class RangerEnemy : BaseEnemy
     [SerializeField] private Arrow arrowPrefab;
     [SerializeField] private Transform targeting;
     [SerializeField] private float wanderSpeed;
+
+    [SerializeField] private Sprite walkingSprite;
+    [SerializeField] private Sprite aimingSprite;
     
     private bool _isAiming = false;
 
@@ -29,6 +32,7 @@ public class RangerEnemy : BaseEnemy
         if (!_isAiming)
         {
             Body.velocity = _wanderDirection * wanderSpeed;
+            Sprite.flipX = Body.velocity.x < 0f;
             
             _cooldownTimer -= Time.deltaTime;
             
@@ -38,6 +42,7 @@ public class RangerEnemy : BaseEnemy
         else
         {
             Body.velocity = Vector3.zero;
+            Sprite.flipX = transform.position.x > Target.position.x;
             
             _aimingTimer += Time.deltaTime;
 
@@ -55,6 +60,7 @@ public class RangerEnemy : BaseEnemy
     {
         _isAiming = true;
         _aimingTimer = 0f;
+        Sprite.sprite = aimingSprite;
         
         targeting.gameObject.SetActive(true);
     }
@@ -77,6 +83,7 @@ public class RangerEnemy : BaseEnemy
 
         _cooldownTimer = shotCooldown;
         targeting.gameObject.SetActive(false);
+        Sprite.sprite = walkingSprite;
         
         _isAiming = false;
 

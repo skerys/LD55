@@ -15,6 +15,7 @@ public class DashController : MonoBehaviour
     [SerializeField] private float dashCooldown = 0.5f;
     [SerializeField] private MirrorImageDestruct mirrorImageSprite = default;
     [SerializeField] private int mirrorImageCount = 3;
+    [SerializeField] private SpriteRenderer sprite;
     
     private SphereCollider _collider;
     private Rigidbody _body;

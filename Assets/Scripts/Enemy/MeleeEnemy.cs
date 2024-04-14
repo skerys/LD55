@@ -13,6 +13,8 @@ public class MeleeEnemy : BaseEnemy
         {
             Vector3 dirToTarget = (Target.position - transform.position).normalized;
             Body.velocity = dirToTarget * speed;
+
+            Sprite.flipX = Body.velocity.x < 0f;
         }
     }
 }
