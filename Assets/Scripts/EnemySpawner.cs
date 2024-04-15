@@ -82,6 +82,7 @@ public class EnemySpawner : MonoBehaviour
         Vector3 worldPos = new Vector3(randomPos.x, 0f, randomPos.y);
 
         ScenarioManager.AddEnemyCount(1);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.EnemySpawn);
         
         switch (enemyType)
         {

@@ -91,6 +91,8 @@ public class DashController : MonoBehaviour
             return;
         }
 
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.DashAttack);
+        
         Vector3 dashDirection = (hitInfo.point - transform.position).normalized;
         float dashDistance = Mathf.Min(maxDashLength, (hitInfo.point - transform.position).magnitude);
         Vector3 spherePoint = transform.TransformPoint(_collider.center);

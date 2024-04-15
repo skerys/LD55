@@ -57,6 +57,8 @@ public class DemonController : MonoBehaviour
         newVelocity.z = Mathf.MoveTowards(oldVelocity.z, _targetVelocity.z, maxSpeedChange);
         
         _body.velocity = newVelocity;
+        
+        SoundManager.Instance.UpdateVelocity(newVelocity.magnitude);
     }
 
     public void Bounce(Vector3 direction)

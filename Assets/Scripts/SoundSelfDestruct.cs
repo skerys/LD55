@@ -1,18 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SoundSelfDestruct : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private static readonly float pitchRange = 0.3f;
+    
+    private AudioSource _audioSource;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.pitch += Random.Range(-pitchRange, pitchRange);
         
+        Destroy(this.gameObject, _audioSource.clip.length);
     }
 }

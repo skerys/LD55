@@ -91,6 +91,9 @@ public class OvenGame : MonoBehaviour
             {
                 ladleAnim.enabled = false;
                 cookParticles.SetActive(false);
+                
+                SoundManager.Instance.PlaySound(OneShotSoundTypes.Slurp);
+                
                 hsc.SwitchToDefault();
                 _cookAnimTimeElapsed = 0f;
                 _cookAnimStarted = false;
@@ -127,6 +130,7 @@ public class OvenGame : MonoBehaviour
         if (!isActive) return;
         
         SetHintActive(_ingredients.IndexOf(ingredient));
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.PepperPlop);
         
         if (!_selectedIngredient)
         {
@@ -159,9 +163,12 @@ public class OvenGame : MonoBehaviour
     [ContextMenu("Do Cooking")]
     public void DoCooking()
     {
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Pop);
         improvementLibrary.EnableImprovement(_selectedIngredient.improvement);
         CloseCupboard();
 
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.StirPot);
+        
         _cookAnimStarted = true;
         ladleAnim.enabled = true;
         cookParticles.SetActive(true);

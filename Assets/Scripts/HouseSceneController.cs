@@ -61,6 +61,8 @@ public class HouseSceneController : MonoBehaviour
         spawnCircle.sortingOrder = 2;
         blackSquareTargetAlpha = 1f;
         StartCoroutine(WaitForStartAnim(spawnAnimTime));
+        
+        SoundManager.Instance.UpdateScene(true);
     }
 
     IEnumerator WaitForStartAnim(float t)
@@ -71,9 +73,11 @@ public class HouseSceneController : MonoBehaviour
         spawnCircle.sortingOrder = -1;
         var spawnAnimation = Instantiate(spawnAnimationPrefab, demonGuy.transform.position,
             spawnAnimationPrefab.transform.rotation);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Woosh);
         yield return new WaitForSeconds(t);
         spawnAnimation.gameObject.SetActive(false);
         demonGuy.gameObject.SetActive(true);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyCry);
         circleTargetAlpha = 0f;
     }
 
@@ -89,6 +93,7 @@ public class HouseSceneController : MonoBehaviour
     {
         demonGuy.gameObject.SetActive(false);
         Instantiate(despawnAnimationPrefab, demonGuy.transform.position + Vector3.up * 0.4f, despawnAnimationPrefab.transform.rotation);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Woosh);
 
         StartCoroutine(LoadScene("CombatScene"));
     }
@@ -123,6 +128,7 @@ public class HouseSceneController : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    SoundManager.Instance.PlaySound(OneShotSoundTypes.Pop);
                     if (Vector3.Distance(player.transform.position, ovenPoint.position) < interactionRange)
                     {
                        if(ovenGame.isStartable) SwitchToOven();
@@ -169,7 +175,8 @@ public class HouseSceneController : MonoBehaviour
         cinemachineAnimator.Play("Crib");
         _currentState = HOUSE_STATE.CribGame;
         currentTargetPosition = cribStandPosition.position;
-
+        
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyCry);
         babyGame.isActive = true;
 
         player.allowInput = false;

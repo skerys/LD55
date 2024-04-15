@@ -17,6 +17,7 @@ public class SceneExit : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _demonInside)
         {
+            SoundManager.Instance.PlaySound(OneShotSoundTypes.Pop);
             OnPlayerExit();
         }
     }

@@ -70,6 +70,7 @@ public class ScenarioManager : MonoBehaviour
             SetBlackSquareAlpha(0f);
         }
 
+        SoundManager.Instance.UpdateScene(false);
         blackSquareTargetAlpha = 0f;
     }
 
@@ -92,6 +93,7 @@ public class ScenarioManager : MonoBehaviour
     {
         if (GameStateManager.instance.NeedToShowStartMenu)
         {
+            SoundManager.Instance.PlaySound(OneShotSoundTypes.Pop);
             GameStateManager.instance.NeedToShowStartMenu = false;
         }
         
@@ -103,6 +105,7 @@ public class ScenarioManager : MonoBehaviour
 
     public void RestartScene()
     {
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Pop);
         SceneManager.LoadScene("CombatScene");
     }
 
@@ -118,6 +121,7 @@ public class ScenarioManager : MonoBehaviour
         
         demonGuy.gameObject.SetActive(false);
         Instantiate(despawnAnimation, demonGuy.transform.position + Vector3.up * 0.4f, despawnAnimation.transform.rotation);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Woosh);
 
         startUncharging = true;
     }
@@ -126,6 +130,7 @@ public class ScenarioManager : MonoBehaviour
     {
         demonGuy.gameObject.SetActive(false);
         deathEffectGO = Instantiate(deathAnimation, demonGuy.transform.position + Vector3.up * 0.4f, deathAnimation.transform.rotation);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Woosh);
         demonGuy.transform.position += 100f * Vector3.forward;
 
         StartCoroutine(SpawnAshParticles(1f));
@@ -199,6 +204,7 @@ public class ScenarioManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         circle.sortingOrder = -1;
         spawnEffectGO = Instantiate(spawnAnimation, circle.transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.Woosh);
     }
 
     IEnumerator EnableDemon(float waitTime)
