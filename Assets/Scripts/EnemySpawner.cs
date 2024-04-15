@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private BaseEnemy meleeEnemy;
     [SerializeField] private RangerEnemy rangedEnemy;
+    [SerializeField] private BarbarianEnemy barbarianEnemy;
 
     [SerializeField] private float spawnCircleRadius;
     [SerializeField] private float minCooldown;
@@ -97,6 +98,7 @@ public class EnemySpawner : MonoBehaviour
                 ranger.initialWanderPosition = wanderWorldPos;
                 break;
             case EnemyType.Barbarian:
+                Instantiate(barbarianEnemy, worldPos, Quaternion.identity);
                 break;
         }
     }
