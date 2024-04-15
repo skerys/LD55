@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17762856, g: 0.21588445, b: 0.2672339, a: 1}
+  m_IndirectSpecularColor: {r: 0.17762817, g: 0.21588375, b: 0.26723287, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3597,6 +3597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeEnemy: {fileID: 5605244165306954128, guid: 6647a973cfab44d6b91587efed2b04c2, type: 3}
   rangedEnemy: {fileID: 4343292136278792306, guid: f0509146a48b549349e6e74ba0c94cba, type: 3}
+  barbarianEnemy: {fileID: 1065159659462041491, guid: 9e5ca0d727dcb42ffbe916bf05bdc857, type: 3}
   spawnCircleRadius: 9
   minCooldown: 0
   maxCooldown: 3
