@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,10 +17,9 @@ namespace DefaultNamespace
         public int barbarianCount;
     }
     
-    
-    
     [CreateAssetMenu(fileName = "GameStateManager.asset", menuName = "Liutauras/GameStateManager")]
-    public class GameStateManager : ScriptableSingleton<GameStateManager>
+   // [FilePath("Assets/Data/GameStateManager.asset", FilePathAttribute.Location.ProjectFolder)]
+    public class GameStateManager : ScriptableObject
     {
         public bool NeedToShowStartMenu = false;
         public bool OvenGameStartable = false;
@@ -31,7 +31,19 @@ namespace DefaultNamespace
 
         public int currentStage;
         public List<StagedInfo> infoByStage = new List<StagedInfo>();
-
+        
+        
+        private static GameStateManager _instance;
+        public static GameStateManager instance {
+            get {
+                if (_instance == null)
+                {
+                    _instance = Resources.Load<GameStateManager>("GameStateManager");
+                }
+                return _instance;
+            }
+        }
+        
         public void NextStage()
         {
             currentStage++;
