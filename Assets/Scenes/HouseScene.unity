@@ -3601,7 +3601,7 @@ Transform:
   m_GameObject: {fileID: 1628475635}
   serializedVersion: 2
   m_LocalRotation: {x: 0.47685, y: 0.5221246, z: 0.5221246, w: -0.47685}
-  m_LocalPosition: {x: 4.12, y: 0, z: 0.26783}
+  m_LocalPosition: {x: 4.354, y: -0, z: 0.289}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7452,8 +7452,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: VelocityModule.z.scalar
-      value: 1.29
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.maxNumParticles
@@ -7461,15 +7465,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.2
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.1
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.startLifetime.minScalar
