@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScenarioManager : MonoBehaviour
 {
@@ -18,13 +20,20 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     [SerializeField] private SceneExit sceneExit;
     [SerializeField] private HealthUI healthUI;
+    [SerializeField] private SpriteRenderer blackSquare;
+
+    [SerializeField] private GameObject startButton;
+    [SerializeField] private GameObject restartButton;
+    [SerializeField] private GameObject title;
 
     public List<Animator> warlocks = new List<Animator>();
 
     [SerializeField] private float chargeUpTime;
     [SerializeField] private float animationTime;
+    [SerializeField] private float uiMoveSpeed;
 
     private float _chargeUpTimer = 0f;
+    private bool needToChangeCircleCol;
     private bool startCharging = false;
 
     private bool startUncharging = false;
@@ -35,9 +44,33 @@ public class ScenarioManager : MonoBehaviour
     private GameObject deathEffectGO = null;
     private DemonHealth _demonHealth;
 
+    private float blackSquareTargetAlpha = 0f;
+
     private void Awake()
     {
         _demonHealth = demonGuy.GetComponent<DemonHealth>();
+    }
+
+    private void Start()
+    {
+        if (!GameStateManager.instance.NeedToShowStartMenu)
+        {
+            needToChangeCircleCol = false;
+            startButton.SetActive(false);
+            title.SetActive(false);
+            StartSpawnSequence();
+            SetBlackSquareAlpha(1f);
+            circle.color = circleColor.Evaluate(1f);
+            circle.sortingOrder = 2;
+        }
+        else
+        {
+            circle.color = circleColor.Evaluate(0f);
+            needToChangeCircleCol = true;
+            SetBlackSquareAlpha(0f);
+        }
+
+        blackSquareTargetAlpha = 0f;
     }
 
     private void OnEnable()
@@ -55,12 +88,22 @@ public class ScenarioManager : MonoBehaviour
     }
 
     [ContextMenu("StartSpawnSequence")]
-    void StartSpawnSequence()
+    public void StartSpawnSequence()
     {
+        if (GameStateManager.instance.NeedToShowStartMenu)
+        {
+            GameStateManager.instance.NeedToShowStartMenu = false;
+        }
+        
         startCharging = true;
         
         StartCoroutine(SpawnEffect(chargeUpTime));
         StartCoroutine(EnableDemon(chargeUpTime + animationTime));
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene("CombatScene");
     }
 
     void SetupEndSequence()
@@ -88,12 +131,32 @@ public class ScenarioManager : MonoBehaviour
         StartCoroutine(SpawnAshParticles(1f));
     }
 
+    IEnumerator LoadScene(string sceneName)
+    {
+        healthUI.gameObject.SetActive(false);
+        blackSquareTargetAlpha = 1f;
+        circle.sortingOrder = 2;
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene("HouseScene");
+    }
+
+    void SetBlackSquareAlpha(float value)
+    {
+        var current = blackSquare.color;
+        blackSquare.color = new Color(current.r, current.g, current.b, value);
+    }
+
     private void Update()
     {
+        SetBlackSquareAlpha(blackSquare.color.a + Mathf.Sign(blackSquareTargetAlpha - blackSquare.color.a) * 1f * Time.deltaTime);
+        
         if (startCharging)
         {
             _chargeUpTimer += Time.deltaTime;
-            circle.color = circleColor.Evaluate(_chargeUpTimer / chargeUpTime);
+            if(needToChangeCircleCol) circle.color = circleColor.Evaluate(_chargeUpTimer / chargeUpTime);
+
+            startButton.transform.position += Vector3.down * (uiMoveSpeed * Time.deltaTime);
+            title.transform.position += Vector3.up * (uiMoveSpeed * Time.deltaTime);
 
             if (_chargeUpTimer > chargeUpTime)
             {
@@ -105,17 +168,20 @@ public class ScenarioManager : MonoBehaviour
         if (startUncharging)
         {
             _chargeUpTimer += Time.deltaTime;
-            circle.color = circleColor.Evaluate(1 - (_chargeUpTimer / chargeUpTime));
+            //circle.color = circleColor.Evaluate(1 - (_chargeUpTimer / chargeUpTime));
 
-            if (_chargeUpTimer > chargeUpTime)
+            if (_chargeUpTimer > 0.9f * chargeUpTime)
             {
-                startUncharging = false;
-                _chargeUpTimer = 0f;
-
                 foreach (var warlock in warlocks)
                 {
                     warlock.Play("WarlockIdle");
                 }
+            }
+            if (_chargeUpTimer > chargeUpTime)
+            {
+                startUncharging = false;
+                _chargeUpTimer = 0f;
+                StartCoroutine(LoadScene("HouseScene"));
             }
             
         }
@@ -131,6 +197,7 @@ public class ScenarioManager : MonoBehaviour
     IEnumerator SpawnEffect(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
+        circle.sortingOrder = -1;
         spawnEffectGO = Instantiate(spawnAnimation, circle.transform.position, Quaternion.identity);
     }
 
@@ -151,6 +218,8 @@ public class ScenarioManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         Instantiate(ashEffect, deathEffectGO.transform.position, ashEffect.transform.rotation);
+        restartButton.SetActive(true);
+        
         Destroy(deathEffectGO);
         
         

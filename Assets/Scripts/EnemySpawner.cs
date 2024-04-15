@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -39,6 +40,8 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         _currentCooldown = Random.Range(minCooldown, maxCooldown);
+        
+        FillReinforcements(GameStateManager.instance.MeleeCount, GameStateManager.instance.RangedCount, GameStateManager.instance.BarbarianCount);
     }
 
     void Update()

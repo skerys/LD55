@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class BabyGame : MonoBehaviour
 {
+    public bool isActive = false;
+    public bool isStartable = true;
+
+    [SerializeField] private HouseSceneController hsc;
     [SerializeField] private LayerMask babyMouseLayermask;
     [SerializeField] private SpriteRenderer babySprite;
     [SerializeField] private Sprite calmSprite;
@@ -16,6 +21,7 @@ public class BabyGame : MonoBehaviour
     
     private bool _mousedOver;
     private bool _pickedUp;
+    private bool _gameFinished = false;
     private Camera _mainCam;
 
     private Vector3 _previousPos;
@@ -30,11 +36,17 @@ public class BabyGame : MonoBehaviour
     {
         _anchorPosition = transform.position;
         _mainCam = Camera.main;
+
+        if (!GameStateManager.instance.BabyGameStartable)
+        {
+            isStartable = false;
+            CalmBaby();
+        }
     }
     
     void Update()
     {
-        if (_mousedOver && Input.GetMouseButtonDown(0))
+        if (isActive && _mousedOver && Input.GetMouseButtonDown(0))
         {
             _pickedUp = true;
         }
@@ -42,6 +54,11 @@ public class BabyGame : MonoBehaviour
         if (_pickedUp && Input.GetMouseButtonUp(0))
         {
             _pickedUp = false;
+            if (_gameFinished)
+            {
+                isStartable = false;
+                hsc.SwitchToDefault();
+            }
         }
 
         if (_pickedUp)
@@ -73,6 +90,7 @@ public class BabyGame : MonoBehaviour
                 if (_calming > calmingRequired)
                 {
                     CalmBaby();
+                    _gameFinished = true;
                 }
             }
             

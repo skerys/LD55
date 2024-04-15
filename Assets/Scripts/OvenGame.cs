@@ -1,10 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OvenGame : MonoBehaviour
 {
+    public bool isActive = false;
+    public bool isStartable = true;
+    
     [SerializeField] private HouseSceneController hsc;
     [SerializeField] private ImprovementLibrary improvementLibrary;
     [SerializeField] private Transform cabinetDoorLeft;
@@ -18,6 +23,8 @@ public class OvenGame : MonoBehaviour
     [SerializeField] private Material soupMat;
     [SerializeField] private Material particleMat;
     [SerializeField] private GameObject cookParticles;
+
+    [SerializeField] private Button cookButton;
 
     [SerializeField] private BabyTurretAnimation ladleAnim;
     [SerializeField] private float cookAnimTime = 3f;
@@ -41,8 +48,13 @@ public class OvenGame : MonoBehaviour
 
     private void Start()
     {
-        particleMat.color = soupMat.color = uncookedColor;
+        if (!GameStateManager.instance.OvenGameStartable)
+        {
+            isStartable = false;
+            cookParticles.SetActive(false);
+        }
         
+        particleMat.color = soupMat.color = uncookedColor;
         
         _doorLeftStart = cabinetDoorLeft.rotation;
         _doorRightStart = cabinetDoorRight.rotation;
@@ -59,6 +71,8 @@ public class OvenGame : MonoBehaviour
 
     public void Update()
     {
+        cookButton.interactable = _selectedIngredient;
+        
         if (Mathf.Abs(_targetRotation - _currentRotation) > 0.01f)
         {
             _currentRotation += (_targetRotation - _currentRotation) * Mathf.Min(doorOpenSpeedPercentage * Time.deltaTime, 0.2f);
@@ -85,12 +99,16 @@ public class OvenGame : MonoBehaviour
     public void StartOvenGame()
     {
         OpenCupboard();
+        cookButton.gameObject.SetActive(true);
     }
 
     public void EndOvenGame()
     {
         CloseCupboard();
+        cookButton.gameObject.SetActive(false);
         _cookAnimTimeElapsed = 0f;
+
+        isStartable = false;
     }
 
     void OpenCupboard()
@@ -105,6 +123,8 @@ public class OvenGame : MonoBehaviour
 
     public void PickIngredient(OvenIngredient ingredient)
     {
+        if (!isActive) return;
+        
         if (!_selectedIngredient)
         {
             ingredient.MoveTo(potLocation.position);

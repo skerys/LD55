@@ -34,7 +34,6 @@ public class HealthUI : MonoBehaviour
             for (int i = 0; i < hearts.Count; ++i)
             {
                 hearts[i].gameObject.SetActive(i < maxHealth);
-                Debug.Log("setting " + hearts[i].gameObject + " to " + (i < maxHealth));
             }
 
             _knownMaxHealth = maxHealth;
@@ -50,6 +49,12 @@ public class HealthUI : MonoBehaviour
             _knownCurrentHealth = currentHealth;
         }
     }
-    
-    
+
+    public void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 }
