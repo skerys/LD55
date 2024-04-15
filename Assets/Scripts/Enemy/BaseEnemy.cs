@@ -33,6 +33,7 @@ public class BaseEnemy : MonoBehaviour
 
     private void Die()
     {
+        SoundManager.Instance.PlaySound(OneShotSoundTypes.EnemyDeath);
         var go = Instantiate(deathEffect, transform.position, Quaternion.identity);
         foreach (var sr in go.GetComponentsInChildren<SpriteRenderer>())
         {

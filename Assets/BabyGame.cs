@@ -99,11 +99,12 @@ public class BabyGame : MonoBehaviour
             if (_averageSpeed > 1f && _averageSpeed < 3f)
             {
                 _calming += Time.deltaTime;
-                if (_calming > calmingRequired)
+                if (!_gameFinished && _calming > calmingRequired)
                 {
                     CalmBaby();
                     _gameFinished = true;
                     _improvementLibrary.EnableImprovement(ImprovementLibrary.ImprovementType.BabyPowerup);
+                    SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyHappy);
                 }
             }
             
