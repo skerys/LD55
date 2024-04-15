@@ -5,6 +5,7 @@ public class BaseProjectile : MonoBehaviour
 {
     [SerializeField] private Transform spriteTransform;
     [SerializeField] private float speed;
+    [SerializeField] private float rotationOffset = 0f;
 
     private Rigidbody _body;
     private Camera _mainCamera;
@@ -26,6 +27,6 @@ public class BaseProjectile : MonoBehaviour
         
         float zAngle = Vector3.SignedAngle(a, b, -cameraDir);
         
-        spriteTransform.rotation = Quaternion.Euler(30f, 0f, -zAngle);
+        spriteTransform.rotation = Quaternion.Euler(30f, 0f, -zAngle + rotationOffset);
     }
 }

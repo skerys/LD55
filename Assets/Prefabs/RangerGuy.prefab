@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6836436471028707009}
   - component: {fileID: 4343292136278792306}
   - component: {fileID: 859898938532452573}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RangerGuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734709961826866320}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.51, y: 0, z: -2.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -98,7 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 412328766592271062, guid: 8ffceb5e7161d4ffeb402922fcbf9c40, type: 3}
-  shotCooldown: 5
+  initialWander: 0
+  initialWanderPosition: {x: 0, y: 0, z: 0}
+  initialWanderSpeedMultiplier: 5
+  shotCooldown: 2
   aimTime: 2
   arrowPrefab: {fileID: 4619778768673118954, guid: c72a9d4bb1b32415daaa955dbb35ac6d, type: 3}
   targeting: {fileID: 964165226753411165}
@@ -131,13 +134,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 964165226753411165}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Triangle holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &964165226753411165
 Transform:
   m_ObjectHideFlags: 0
@@ -164,7 +167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1118916803345852522}
   - component: {fileID: 2002147926195135632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,8 +184,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.3, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.2, z: 0.20000002}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 964165226753411165}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -227,7 +230,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: -1758336180, guid: 69e397f8b0b0949fc9a8f314a9614da7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -248,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2615678435650651465}
   - component: {fileID: 3450880755175511223}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: goober
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,8 +281,8 @@ SpriteRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6554668532432513513}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -290,7 +293,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6ae1bdd7d28b04bd2b4d03e37daf2d9c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -4,7 +4,7 @@ public class BaseEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject deathEffect;
     
-    private int _health = 1;
+    protected int _health = 1;
     
     protected Transform Target;
     protected Rigidbody Body;
@@ -18,12 +18,17 @@ public class BaseEnemy : MonoBehaviour
         Sprite = GetComponentInChildren<SpriteRenderer>();
     }
     
-    public void DoHit(int strength)
+    public virtual bool DoHit(int strength)
     {
         _health -= strength;
 
         if (_health <= 0)
+        {
             Die();
+            ScenarioManager.RemoveEnemyCount(1);
+            return true;
+        }
+        return false;
     }
 
     private void Die()

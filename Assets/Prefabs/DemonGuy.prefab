@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6509183291540895130
 Transform:
   m_ObjectHideFlags: 0
@@ -305,7 +305,6 @@ GameObject:
   - component: {fileID: 2382290928131658608}
   - component: {fileID: 3579043715010902709}
   - component: {fileID: 4473166614123771899}
-  - component: {fileID: 8263921731291326859}
   m_Layer: 0
   m_Name: DemonGuy
   m_TagString: Untagged
@@ -349,7 +348,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!54 &3565597103027081713
 Rigidbody:
@@ -421,6 +420,7 @@ MonoBehaviour:
   sprite: {fileID: 6594589965396135265}
   dashStartPosition: {x: 0, y: 0, z: 0}
   dashTargetPosition: {x: 0, y: 0, z: 0}
+  killsThisDash: 0
 --- !u!114 &1315389453284321833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +448,7 @@ MonoBehaviour:
   maxHealth: 3
   invulnerableTime: 0.5
   _demonSprite: {fileID: 6594589965396135265}
+  deathCamera: {fileID: 0}
 --- !u!114 &3579043715010902709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,17 +473,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198f4e39fee3f4c00b0d87c33ba919bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  improvementLib: {fileID: 0}
---- !u!114 &8263921731291326859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9048327908834452470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 198f4e39fee3f4c00b0d87c33ba919bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  improvementLib: {fileID: 0}
+  improvementLib: {fileID: 11400000, guid: 1e6a25a3036e2494398339fa45f1ec4e, type: 2}
