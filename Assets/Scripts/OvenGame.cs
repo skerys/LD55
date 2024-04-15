@@ -16,6 +16,8 @@ public class OvenGame : MonoBehaviour
     [SerializeField] private Color uncookedColor;
     [SerializeField] private Color cookedColor;
     [SerializeField] private Material soupMat;
+    [SerializeField] private Material particleMat;
+    [SerializeField] private GameObject cookParticles;
 
     [SerializeField] private BabyTurretAnimation ladleAnim;
     [SerializeField] private float cookAnimTime = 3f;
@@ -39,7 +41,8 @@ public class OvenGame : MonoBehaviour
 
     private void Start()
     {
-        soupMat.color = uncookedColor;
+        particleMat.color = soupMat.color = uncookedColor;
+        
         
         _doorLeftStart = cabinetDoorLeft.rotation;
         _doorRightStart = cabinetDoorRight.rotation;
@@ -67,11 +70,12 @@ public class OvenGame : MonoBehaviour
         {
             _cookAnimTimeElapsed += Time.deltaTime;
 
-            soupMat.color = Color.Lerp(uncookedColor, cookedColor, _cookAnimTimeElapsed / cookAnimTime);
+            particleMat.color = soupMat.color = Color.Lerp(uncookedColor, cookedColor, _cookAnimTimeElapsed / cookAnimTime);
             
             if (_cookAnimTimeElapsed > cookAnimTime)
             {
                 ladleAnim.enabled = false;
+                cookParticles.SetActive(false);
                 hsc.SwitchToDefault();
                 _cookAnimTimeElapsed = 0f;
                 _cookAnimStarted = false;
@@ -118,7 +122,7 @@ public class OvenGame : MonoBehaviour
 
     private void OnDisable()
     {
-        soupMat.color = uncookedColor;
+        particleMat.color = soupMat.color = uncookedColor;
     }
 
     [ContextMenu("Do Cooking")]
@@ -129,6 +133,7 @@ public class OvenGame : MonoBehaviour
 
         _cookAnimStarted = true;
         ladleAnim.enabled = true;
+        cookParticles.SetActive(true);
         
         Destroy(_selectedIngredient.gameObject);
     }

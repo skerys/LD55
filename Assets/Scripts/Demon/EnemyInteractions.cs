@@ -23,7 +23,11 @@ public class EnemyInteractions : MonoBehaviour
             if (_dash.DashInProgress)
             {
                 //Currently dashing, kill enemy/do damage
-                enemy.DoHit(1);
+                if (enemy.DoHit(1))
+                {
+                    _dash.killsThisDash++;
+                };
+                
             }
             else
             {

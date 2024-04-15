@@ -9,9 +9,18 @@ public class DemonImprovements : MonoBehaviour
     private DemonController _demon;
     private DashController _dash;
     private DemonHealth _health;
+
+    public void Start()
+    {
+        _demon = GetComponent<DemonController>();
+        _dash = GetComponent<DashController>();
+        _health = GetComponent<DemonHealth>();
+    }
+    
     
     public void SetupImprovements()
     {
+        Start();
         if (improvementLib.improvements[(int)ImprovementLibrary.ImprovementType.AdditionalHealth])
         {
             _health.AddMaxHealth(1);

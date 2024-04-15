@@ -27,6 +27,7 @@ public class DashController : MonoBehaviour
     private float _dashCooldownTimer;
 
     private int _mirrorImagesSpawned = 0;
+    [HideInInspector] public int killsThisDash = 0;
 
     private bool _dashInProgress = false;
 
@@ -107,12 +108,12 @@ public class DashController : MonoBehaviour
         
         dashTargetPosition = spherePoint;
         dashTargetPosition.y = 0f;
-
-        _dashCooldownTimer = 0f;
+        
         _body.isKinematic = true;
         _collider.isTrigger = true;
         _demon.enabled = false;
         _dashInProgress = true;
+        killsThisDash = 0;
     }
 
     private void EndDash()
@@ -123,6 +124,11 @@ public class DashController : MonoBehaviour
         _dashInProgress = false;
         _dashProgress = 0f;
         _mirrorImagesSpawned = 0;
+
+        if (killsThisDash <= 1)
+        {
+            _dashCooldownTimer = 0f;
+        }
     }
 
     public void ModifyDashLength(float value)

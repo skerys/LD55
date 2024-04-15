@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5605244165306954128}
   - component: {fileID: 7263862871330995102}
   - component: {fileID: 4395892264908067256}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyGuy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathEffect: {fileID: 412328766592271062, guid: 5f5369d3cfa3c4472a3790532ea41c3d, type: 3}
-  speed: 1
+  speed: 2
+  avoidanceRadius: 3
+  avoidanceStrength: 1.5
+  enemyLayermask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!54 &7263862871330995102
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5758299418323056859}
   - component: {fileID: 2603768217658324450}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: goober
   m_TagString: Untagged
   m_Icon: {fileID: 0}

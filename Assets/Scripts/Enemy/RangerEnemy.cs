@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class RangerEnemy : BaseEnemy
 {
+    public bool initialWander = false;
+    public Vector3 initialWanderPosition = Vector3.zero;
+    [SerializeField] private float initialWanderSpeedMultiplier = 1f;
+    
     [SerializeField] private float shotCooldown;
     [SerializeField] private float aimTime;
     [SerializeField] private Arrow arrowPrefab;
@@ -29,6 +33,19 @@ public class RangerEnemy : BaseEnemy
 
     void Update()
     {
+        if (initialWander)
+        {
+            _wanderDirection = (initialWanderPosition - transform.position).normalized;
+            Body.velocity = _wanderDirection * (wanderSpeed * initialWanderSpeedMultiplier);
+            
+            if (Vector3.Distance(initialWanderPosition, transform.position) < 0.1f)
+            {
+                initialWander = false;
+            }
+
+            return;
+        }
+        
         if (!_isAiming)
         {
             Body.velocity = _wanderDirection * wanderSpeed;
