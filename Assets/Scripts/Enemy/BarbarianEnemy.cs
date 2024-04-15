@@ -6,7 +6,7 @@ public class BarbarianEnemy : BaseEnemy
     [SerializeField] private GameObject helmetEffect;
     [SerializeField] private Sprite helmetlessSprite;
 
-    private void Start()
+    public override void Start()
     {
         base.Start();
         _health = 2;
