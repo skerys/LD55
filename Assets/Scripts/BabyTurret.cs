@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class BabyTurret : MonoBehaviour
@@ -7,7 +9,7 @@ public class BabyTurret : MonoBehaviour
     [SerializeField] private Fireball fireballPrefab;
     [SerializeField] private Transform fireballLaunchTransform;
     [SerializeField] private float shotCooldown = 2f;
-    [SerializeField] private float searchRadius = 5f;
+    [SerializeField] private float searchRadius = 2f;
 
     private float _cooldownTimer = 0f;
 
@@ -38,5 +40,10 @@ public class BabyTurret : MonoBehaviour
         }
 
         _cooldownTimer = shotCooldown;
+    }
+
+    public void ModifyShotCooldown(float value)
+    {
+        shotCooldown *= value;
     }
 }

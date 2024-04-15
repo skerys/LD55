@@ -30,6 +30,7 @@ public class OvenGame : MonoBehaviour
     [SerializeField] private float cookAnimTime = 3f;
 
     [SerializeField] private List<OvenIngredient> _ingredients = new List<OvenIngredient>();
+    [SerializeField] private List<GameObject> hints = new List<GameObject>();
 
     private List<Vector3> _initialPositions;
     
@@ -125,6 +126,8 @@ public class OvenGame : MonoBehaviour
     {
         if (!isActive) return;
         
+        SetHintActive(_ingredients.IndexOf(ingredient));
+        
         if (!_selectedIngredient)
         {
             ingredient.MoveTo(potLocation.position);
@@ -137,6 +140,14 @@ public class OvenGame : MonoBehaviour
             _selectedIngredient.MoveTo(_initialPositions[_ingredients.IndexOf(_selectedIngredient)]);
             ingredient.MoveTo(potLocation.position);
             _selectedIngredient = ingredient;
+        }
+    }
+
+    private void SetHintActive(int index)
+    {
+        for (int i = 0; i < hints.Count; i++)
+        {
+            hints[i].SetActive(i == index);
         }
     }
 

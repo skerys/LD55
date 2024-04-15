@@ -8,6 +8,7 @@ public class BabyGame : MonoBehaviour
     public bool isActive = false;
     public bool isStartable = true;
 
+    [SerializeField] private ImprovementLibrary _improvementLibrary;
     [SerializeField] private HouseSceneController hsc;
     [SerializeField] private LayerMask babyMouseLayermask;
     [SerializeField] private SpriteRenderer babySprite;
@@ -15,6 +16,9 @@ public class BabyGame : MonoBehaviour
     [SerializeField] private GameObject mouthGO;
     [SerializeField] private GameObject binkyGO;
     [SerializeField] private float calmingRequired;
+    
+    [SerializeField] private RectTransform progressFill;
+    [SerializeField] private GameObject progressBorder;
     
     private Vector3 _anchorPosition;
     private Vector3 _targetPostion;
@@ -46,6 +50,14 @@ public class BabyGame : MonoBehaviour
     
     void Update()
     {
+        progressBorder.SetActive(isActive);
+        progressFill.gameObject.SetActive(isActive);
+        
+        if (isActive)
+        {
+            progressFill.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, Mathf.Lerp(0, 230, _calming / calmingRequired));
+        }
+
         if (isActive && _mousedOver && Input.GetMouseButtonDown(0))
         {
             _pickedUp = true;
@@ -91,6 +103,7 @@ public class BabyGame : MonoBehaviour
                 {
                     CalmBaby();
                     _gameFinished = true;
+                    _improvementLibrary.EnableImprovement(ImprovementLibrary.ImprovementType.BabyPowerup);
                 }
             }
             

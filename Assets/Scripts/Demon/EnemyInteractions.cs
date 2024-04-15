@@ -38,7 +38,7 @@ public class EnemyInteractions : MonoBehaviour
 
     private void OnCollisionStay(Collision other)
     {
-        var enemy = other.gameObject.GetComponent<MeleeEnemy>();
+        var enemy = other.gameObject.GetComponent<BaseEnemy>();
 
         if (enemy)
         {

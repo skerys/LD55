@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class DemonImprovements : MonoBehaviour
@@ -9,6 +10,8 @@ public class DemonImprovements : MonoBehaviour
     private DemonController _demon;
     private DashController _dash;
     private DemonHealth _health;
+
+    [SerializeField] private GameObject babyTurret;
 
     public void Start()
     {
@@ -33,12 +36,22 @@ public class DemonImprovements : MonoBehaviour
         
         if (improvementLib.improvements[(int)ImprovementLibrary.ImprovementType.ShorterCooldown])
         {
-            _dash.ModifyDashCooldown(1.5f);
+            _dash.ModifyDashCooldown(0.75f);
         }
         
         if (improvementLib.improvements[(int)ImprovementLibrary.ImprovementType.FasterMoveSpeed])
         {
             _demon.ModifyMoveSpeed(1.2f);
+        }
+        
+        if (improvementLib.improvements[(int)ImprovementLibrary.ImprovementType.FasterFireballs])
+        {
+            babyTurret.GetComponent<BabyTurret>().ModifyShotCooldown(0.5f);
+        }
+        
+        if (improvementLib.improvements[(int)ImprovementLibrary.ImprovementType.BabyPowerup])
+        {
+            babyTurret?.SetActive(true);
         }
     }
 }

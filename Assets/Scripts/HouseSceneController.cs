@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class HouseSceneController : MonoBehaviour
 {
+    [SerializeField] private ImprovementLibrary improvementLibrary;
     [SerializeField] private Animator cinemachineAnimator;
     [SerializeField] private Transform ovenPoint;
     [SerializeField] private Transform cribPoint;
@@ -54,6 +55,8 @@ public class HouseSceneController : MonoBehaviour
 
     void Start()
     {
+        //improvementLibrary.DisableImprovement(ImprovementLibrary.ImprovementType.BabyPowerup);
+        
         circleTargetAlpha = 1f;
         spawnCircle.sortingOrder = 2;
         blackSquareTargetAlpha = 1f;
@@ -85,7 +88,7 @@ public class HouseSceneController : MonoBehaviour
     void DoExit()
     {
         demonGuy.gameObject.SetActive(false);
-        Instantiate(despawnAnimationPrefab, demonGuy.transform.position, despawnAnimationPrefab.transform.rotation);
+        Instantiate(despawnAnimationPrefab, demonGuy.transform.position + Vector3.up * 0.4f, despawnAnimationPrefab.transform.rotation);
 
         StartCoroutine(LoadScene("CombatScene"));
     }

@@ -47,7 +47,7 @@ namespace DefaultNamespace
         public void NextStage()
         {
             currentStage++;
-            var nextStageInfo = infoByStage[Mathf.Max(currentStage, infoByStage.Count)];
+            var nextStageInfo = infoByStage[Mathf.Max(currentStage, infoByStage.Count - 1)];
 
             NeedToShowStartMenu = nextStageInfo.startMenu;
             OvenGameStartable = nextStageInfo.ovenGame;

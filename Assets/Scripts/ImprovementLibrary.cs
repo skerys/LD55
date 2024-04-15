@@ -12,8 +12,9 @@ public class ImprovementLibrary : ScriptableObject
         AdditionalHealth = 1,
         FasterMoveSpeed = 2,
         LongerDash = 3,
-        FirePool = 4,
-        Length = 5
+        FasterFireballs = 4,
+        BabyPowerup = 5,
+        Length = 6
     };
 
     public bool[] improvements = new bool[(int)ImprovementType.Length];
@@ -21,5 +22,10 @@ public class ImprovementLibrary : ScriptableObject
     public void EnableImprovement(ImprovementType type)
     {
         improvements[(int)type] = true;
+    }
+
+    public void DisableImprovement(ImprovementType type)
+    {
+        improvements[(int)type] = false;
     }
 }
