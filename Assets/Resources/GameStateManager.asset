@@ -15,9 +15,9 @@ MonoBehaviour:
   NeedToShowStartMenu: 0
   OvenGameStartable: 1
   BabyGameStartable: 1
-  MeleeCount: 5
-  RangedCount: 5
-  BarbarianCount: 5
+  MeleeCount: 30
+  RangedCount: 30
+  BarbarianCount: 30
   currentStage: 0
   infoByStage:
   - startMenu: 1
