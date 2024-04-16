@@ -4821,7 +4821,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: cd170fde5728a429797bbbeacfb0ff5e, type: 3}
       propertyPath: m_TagString
-      value: Spaceable
+      value: SpaceableCrib
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5464,7 +5464,7 @@ GameObject:
   - component: {fileID: 8228478500669474054}
   m_Layer: 0
   m_Name: countertop_oven
-  m_TagString: Spaceable
+  m_TagString: SpaceableOven
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7899,7 +7899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: VelocityModule.z.scalar
-      value: 0.95
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.maxNumParticles
@@ -7907,7 +7907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.startSize.scalar
-      value: 0.05
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -7915,7 +7915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 0.03
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1578719769394656050, guid: 373ca56435d784d06a6d63933bb6471a, type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar

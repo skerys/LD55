@@ -148,7 +148,16 @@ public class ScenarioManager : MonoBehaviour
         blackSquareTargetAlpha = 1f;
         circle.sortingOrder = 2;
         yield return new WaitForSeconds(1.2f);
-        SceneManager.LoadScene("HouseScene");
+
+        if (GameStateManager.instance.currentStage == GameStateManager.instance.infoByStage.Count - 1)
+        {
+            SceneManager.LoadScene("EndScene");
+        }
+        else
+        {
+            SceneManager.LoadScene("HouseScene");
+        }
+       
     }
 
     void SetBlackSquareAlpha(float value)

@@ -4,7 +4,6 @@ using UnityEngine;
 public class SpaceIndicator : MonoBehaviour
 {
     [SerializeField] private GameObject arrowIndicator;
-
     [SerializeField] private GameObject spaceIndicator;
     
 

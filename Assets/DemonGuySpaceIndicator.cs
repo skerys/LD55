@@ -18,15 +18,22 @@ public class DemonGuySpaceIndicator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Spaceable")
+        if (other.gameObject.tag == "SpaceableOven")
         {
-            spaceIndicator.SetActive(true);
+            if(FindObjectOfType<OvenGame>().isStartable)
+                spaceIndicator.SetActive(true);
+        }
+        
+        if (other.gameObject.tag == "SpaceableCrib")
+        {
+            if(FindObjectOfType<BabyGame>().isStartable)
+                spaceIndicator.SetActive(true);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Spaceable")
+        if (other.gameObject.tag == "SpaceableOven" || other.gameObject.tag == "SpaceableCrib")
         {
             spaceIndicator.SetActive(false);
         }

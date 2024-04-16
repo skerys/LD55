@@ -179,7 +179,7 @@ public class HouseSceneController : MonoBehaviour
         _currentState = HOUSE_STATE.CribGame;
         currentTargetPosition = cribStandPosition.position;
         
-        SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyCry);
+        if(babyGame.isStartable) SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyCry);
         babyGame.isActive = true;
 
         player.allowInput = false;

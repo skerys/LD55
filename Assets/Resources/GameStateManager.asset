@@ -12,23 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28b6802caa84f1da7b677c0dfcfcd8f, type: 3}
   m_Name: GameStateManager
   m_EditorClassIdentifier: 
-  NeedToShowStartMenu: 0
+  NeedToShowStartMenu: 1
   OvenGameStartable: 1
-  BabyGameStartable: 1
-  MeleeCount: 0
-  RangedCount: 1
+  BabyGameStartable: 0
+  MeleeCount: 10
+  RangedCount: 0
   BarbarianCount: 0
-  currentStage: 1
+  currentStage: 0
   infoByStage:
   - startMenu: 1
     ovenGame: 1
     babyGame: 0
-    meleeCount: 1
+    meleeCount: 10
     rangedCount: 0
     barbarianCount: 0
   - startMenu: 0
     ovenGame: 1
     babyGame: 1
-    meleeCount: 0
-    rangedCount: 1
+    meleeCount: 10
+    rangedCount: 10
     barbarianCount: 0
+  - startMenu: 0
+    ovenGame: 1
+    babyGame: 1
+    meleeCount: 10
+    rangedCount: 0
+    barbarianCount: 5
+  - startMenu: 0
+    ovenGame: 1
+    babyGame: 1
+    meleeCount: 30
+    rangedCount: 20
+    barbarianCount: 10
