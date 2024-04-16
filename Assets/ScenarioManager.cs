@@ -168,7 +168,7 @@ public class ScenarioManager : MonoBehaviour
 
     private void Update()
     {
-        SetBlackSquareAlpha(blackSquare.color.a + Mathf.Sign(blackSquareTargetAlpha - blackSquare.color.a) * 1f * Time.deltaTime);
+        SetBlackSquareAlpha(blackSquare.color.a + (blackSquareTargetAlpha - blackSquare.color.a) * 5f * Time.deltaTime);
         
         if (startCharging)
         {

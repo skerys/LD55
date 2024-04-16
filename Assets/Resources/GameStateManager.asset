@@ -41,6 +41,6 @@ MonoBehaviour:
   - startMenu: 0
     ovenGame: 1
     babyGame: 1
-    meleeCount: 30
-    rangedCount: 20
+    meleeCount: 10
+    rangedCount: 5
     barbarianCount: 10

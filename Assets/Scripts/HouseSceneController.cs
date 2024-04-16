@@ -78,7 +78,7 @@ public class HouseSceneController : MonoBehaviour
         yield return new WaitForSeconds(t);
         spawnAnimation.gameObject.SetActive(false);
         demonGuy.gameObject.SetActive(true);
-        SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyCry);
+        if(babyGame.isStartable) SoundManager.Instance.PlaySound(OneShotSoundTypes.BabyCry);
         circleTargetAlpha = 0f;
     }
 
@@ -123,7 +123,7 @@ public class HouseSceneController : MonoBehaviour
         Color cur = spawnCircle.color;
         spawnCircle.color = new Color(cur.r, cur.g, cur.b, cur.a + (circleTargetAlpha - cur.a) * 3f * Time.deltaTime);
         
-        SetBlackSquareAlpha(blackSquare.color.a + Mathf.Sign(blackSquareTargetAlpha - blackSquare.color.a) * 1f * Time.deltaTime);
+        SetBlackSquareAlpha(blackSquare.color.a + (blackSquareTargetAlpha - blackSquare.color.a) * 5f * Time.deltaTime);
         
         switch (_currentState)
         {

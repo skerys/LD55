@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb70459726543d4b6058d91d548d8b4, type: 3}
   m_Name: ImprovementLibrary
   m_EditorClassIdentifier: 
-  improvements: 000000010000
+  improvements: 000000000000
