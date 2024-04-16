@@ -25,6 +25,7 @@ public class ScenarioManager : MonoBehaviour
     [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject restartButton;
     [SerializeField] private GameObject title;
+    [SerializeField] private GameObject thanksBubbles;
 
     public List<Animator> warlocks = new List<Animator>();
 
@@ -113,6 +114,11 @@ public class ScenarioManager : MonoBehaviour
     {
         enemySpawner.enabled = false;
         sceneExit.gameObject.SetActive(true);
+
+        if (GameStateManager.instance.currentStage == GameStateManager.instance.infoByStage.Count - 1)
+        {
+            thanksBubbles.SetActive(true);
+        }
     }
 
     void StartEndSequence()

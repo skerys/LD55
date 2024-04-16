@@ -3,9 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DemonGuySpaceIndicator : MonoBehaviour
 {
     [SerializeField] private GameObject spaceIndicator;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            spaceIndicator.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

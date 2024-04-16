@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -95,6 +96,8 @@ public class HouseSceneController : MonoBehaviour
         Instantiate(despawnAnimationPrefab, demonGuy.transform.position + Vector3.up * 0.4f, despawnAnimationPrefab.transform.rotation);
         SoundManager.Instance.PlaySound(OneShotSoundTypes.Woosh);
 
+        GameStateManager.instance.NextStage();
+        
         StartCoroutine(LoadScene("CombatScene"));
     }
 

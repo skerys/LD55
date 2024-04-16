@@ -15,14 +15,20 @@ MonoBehaviour:
   NeedToShowStartMenu: 0
   OvenGameStartable: 1
   BabyGameStartable: 1
-  MeleeCount: 30
-  RangedCount: 30
-  BarbarianCount: 30
-  currentStage: 0
+  MeleeCount: 0
+  RangedCount: 1
+  BarbarianCount: 0
+  currentStage: 1
   infoByStage:
   - startMenu: 1
     ovenGame: 1
+    babyGame: 0
+    meleeCount: 1
+    rangedCount: 0
+    barbarianCount: 0
+  - startMenu: 0
+    ovenGame: 1
     babyGame: 1
-    meleeCount: 5
-    rangedCount: 5
-    barbarianCount: 5
+    meleeCount: 0
+    rangedCount: 1
+    barbarianCount: 0

@@ -386,14 +386,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 48514831423027885, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3293620076740406283, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
-      propertyPath: spaceIndicator
-      value: 
-      objectReference: {fileID: 982685709}
     - target: {fileID: 3562365009269905180, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
       propertyPath: mainCam
       value: 
@@ -440,6 +432,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5080406597918825441, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7895835314299005632, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9048327908834452470, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
@@ -2826,11 +2822,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952844406}
   m_CullTransparentMesh: 1
---- !u!1 &982685709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 48514831423027885, guid: 22535e4b5b843495faa6ac89fdeb3d58, type: 3}
-  m_PrefabInstance: {fileID: 159605072}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1048669822
 PrefabInstance:
   m_ObjectHideFlags: 0
